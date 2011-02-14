@@ -1,0 +1,23 @@
+!!! XML
+!!! Strict
+%html{html_attrs}
+	%head
+		%meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}
+		%script{:src => '/jquery.js', :type => 'text/javascript'}
+		%script{:src => 'https://www.google.com/jsapi?key=ABQIAAAAsT4MKbGE8Nd_ju428M-QJBSuSdgACki6E0SddcWqDp11SppERhQMpMHBYD3gYzTVguEojr1NjBqh9A', :type => 'text/javascript'}
+		%script{:src => '/jido.js', :type => 'text/javascript'}
+		%link{:rel => 'stylesheet', :href => '/style.css', :type => 'text/css', :media => 'screen'}
+		%title Jido
+	%body
+		%div{:id => 'container'}
+			%input{:id => 'lookup', :type => 'text'}
+			%img{:id => 'loading', :src => '/loading.gif'}
+			%div{:id => 'sub-lookup'}
+				%div{:id => 'detected'} type a verb to conjugate
+		%ul{:id => 'footer'}
+			%li
+				powered by
+				%a{:href => 'http://github.com/hans/jido'} jido
+			%li
+				language detection
+				%div{:id => 'google-branding'}

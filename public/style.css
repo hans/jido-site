@@ -1,0 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #fbfbfb;
+	color: #222;
+	
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+a {
+	color: inherit;
+}
+
+#container {
+	width: 439px;
+	margin: 15% auto;
+	position: relative;
+}
+
+input[type='text'] {
+	background-color: #fafafa;
+	border: 1px solid #aeb3b8;
+	outline: none;
+	
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	
+	-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, .66), 0 1px 4px rgba(0, 0, 0, .1) inset;
+	-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, .66), 0 1px 4px rgba(0, 0, 0, .1) inset;
+	box-shadow: 0 1px 1px rgba(255, 255, 255, .66), 0 1px 4px rgba(0, 0, 0, .1) inset;
+	
+	font-size: 20px;
+	color: #333;
+	
+	width: 400px;
+	height: 35px;
+	padding: 5px 32px 5px 5px;
+}
+
+#loading {
+	position: absolute;
+	top: 13px;
+	right: 5px;
+	display: none;
+}
+
+#sub-lookup, #footer {
+	margin-top: 5px;
+	font-size: 12px;
+	color: #bbb;
+	width: 439px;
+}
+
+#sub-lookup #detected {
+	margin-left: 15px;
+}
+
+ul#footer {
+	position: absolute;
+	bottom: 7px;
+	right: 7px;
+	list-style: none;
+	font-size: 1em;
+	text-align: right;
+	width: 17.5em;
+}
+
+ul#footer li {
+	margin-top: 5px;
+}
+
+#google-branding {
+	display: inline;
+}
+
+#google-branding .gBranding {
+	display: inline;
+}
+
+#google-branding .gBranding span {
+	color: #bbb !important;
+	font-size: 1em !important;
+	vertical-align: baseline !important;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
