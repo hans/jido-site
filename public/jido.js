@@ -1,4 +1,5 @@
 window.searchTimer = null;
+scrolled = false;
 
 google.load('language', '1');
 google.setOnLoadCallback(displayGoogleBranding);
@@ -10,7 +11,9 @@ function displayGoogleBranding() {
 $(document).ready(function() {
 	$('#lookup').focus().keydown(function(event) {
 		var code = event.keyCode;
-		if ( !( code == 9 || code == 13 || code == 27 ) ) { // 9 = TAB, 13 = Return, 27 = Escape
+		if ( code == 13 )
+			conjugate();
+		else if ( !( code == 9 || code == 27 ) ) { // 9 = TAB, 13 = Return, 27 = Escape
 			if ( window.searchTimer ) clearTimeout(window.searchTimer);
 			window.searchTimer = setTimeout(detectLanguage, 500);
 		}
@@ -28,5 +31,9 @@ $(document).ready(function() {
 			$('#detected').html('Detected language: ' + result.language);
 			$('#loading').hide();
 		});
+	}
+	
+	function conjugate() {
+		if ( !scrolled ) $('#container').animate({top: '-170px'}, 500);
 	}
 });
