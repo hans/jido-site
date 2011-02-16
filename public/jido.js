@@ -8,6 +8,14 @@ function displayGoogleBranding() {
 	document.getElementById('google-branding').appendChild(google.language.getBranding());
 }
 
+//+ Jonas Raoni Soares Silva
+//@ http://jsfromhell.com/string/capitalize [v1.0]
+String.prototype.capitalize = function() {
+	return this.replace(/\w+/g, function(a) {
+		return a.charAt(0).toUpperCase() + a.substr(1).toLowerCase();
+	})
+}
+
 $(document).ready(function() {
 	$('#lookup').focus().keydown(function(event) {
 		var code = event.keyCode;
@@ -28,12 +36,26 @@ $(document).ready(function() {
 		
 		$('#loading').show();
 		google.language.detect(text, function(result) {
-			$('#detected').html('Detected language: ' + result.language);
+			$('#detected').html('Detected language: ' + getLanguageName(result.language));
 			$('#loading').hide();
 		});
 	}
 	
 	function conjugate() {
 		if ( !scrolled ) $('#container').animate({top: '-170px'}, 500);
+	}
+	
+	function getLanguageName(code) {
+		ret = null;
+		
+		for ( var i in google.language.Languages ) {
+			if ( google.language.Languages[i] == code ) {
+				ret = i;
+				break;
+			}
+		}
+		
+		if ( ret ) ret = ret.capitalize();
+		return ret;
 	}
 });
