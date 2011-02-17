@@ -1,4 +1,0 @@
-sinatra --version '>= 1.0'
-haml
-json
-jido --version '>= 0.2.0'
