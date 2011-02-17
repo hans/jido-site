@@ -20,7 +20,7 @@ get '/conjugate/:lang/:verb' do
     
     conjugator = nil
     if conjugators[params[:lang]].nil?
-	conjugator = Jido.load params[:lang]
+	conjugator = Jido::Conjugator.new params[:lang]
 	conjugators[params[:lang]] = conjugator
     else conjugator = conjugators[params[:lang]] end
 
