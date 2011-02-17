@@ -3,6 +3,7 @@ require 'sinatra'
 
 require 'haml'
 require 'json'
+require 'jido'
 
 get '/' do
     haml :index
@@ -17,7 +18,6 @@ conjugators = {}
 get '/conjugate/:lang/:verb' do
     content_type :json
     
-    require 'jido'
     conjugator = nil
     if conjugators[params[:lang]].nil?
 	conjugator = Jido.load params[:lang]
