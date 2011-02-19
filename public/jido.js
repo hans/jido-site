@@ -1,4 +1,5 @@
-window.searchTimer = null;
+detectedLanguage = null;
+searchTimer = null;
 scrolled = false;
 
 google.load('language', '1');
@@ -22,8 +23,8 @@ $(document).ready(function() {
 		if ( code == 13 )
 			conjugate();
 		else if ( !( code == 9 || code == 27 ) ) { // 9 = TAB, 13 = Return, 27 = Escape
-			if ( window.searchTimer ) clearTimeout(window.searchTimer);
-			window.searchTimer = setTimeout(detectLanguage, 500);
+			if ( searchTimer ) clearTimeout(searchTimer);
+			searchTimer = setTimeout(detectLanguage, 500);
 		}
 	});
 	
@@ -36,13 +37,21 @@ $(document).ready(function() {
 		
 		$('#loading').show();
 		google.language.detect(text, function(result) {
+			detectedLanguage = result.language;
 			$('#detected').html('Detected language: ' + getLanguageName(result.language));
 			$('#loading').hide();
 		});
 	}
 	
 	function conjugate() {
+		var val = $('#lookup').val();
+
+		if ( !detectedLanguage || val == '' ) return false;
 		if ( !scrolled ) $('#container').animate({top: '-170px'}, 500);
+
+		$.getJSON('/conjugate/' + detectedLanguage + '/' + val, function (data) {
+			console.log(data);
+		});
 	}
 	
 	function getLanguageName(code) {
