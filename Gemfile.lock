@@ -8,6 +8,7 @@ GEM
     json (1.5.1)
     nokogiri (1.4.4)
     rack (1.2.1)
+    redis (2.1.1)
     sinatra (1.1.2)
       rack (~> 1.1)
       tilt (~> 1.2)
@@ -20,4 +21,5 @@ DEPENDENCIES
   haml
   jido (>= 0.2.0)
   json
+  redis
   sinatra
