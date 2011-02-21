@@ -31,9 +31,11 @@ get '/conjugate/:lang/:verb' do
   content_type :json
   
   cache_query = "verbs:#{params[:lang]}:#{params[:verb]}"
-  cached = cache.get cache_query
+  cached = cache.exists cache_query
   
-  if cached.nil?
+  if cached
+    return cache.get cache_query
+  else
     conjugator = nil
     if conjugators[params[:lang]].nil?
       conjugator = Jido.load params[:lang]
@@ -45,7 +47,5 @@ get '/conjugate/:lang/:verb' do
     ret = conjugator.conjugate(params[:verb]).to_json
     cache.set cache_query, ret
     return ret
-  else
-    return cached
   end
 end
