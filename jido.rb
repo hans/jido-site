@@ -18,14 +18,9 @@ end
 # Store conjugator objects so they only need to be initialized once
 conjugators = {}
 
-# Probably shouldn't show you the DB info :)
-db = open('redis_info.json') do |f|
-  JSON.parse f
-end
-
 # Connect to the Redis instance.
 # This will be used to cache conjugation results.
-cache = Redis.new :host => db['host'], :port => db['port'], :password => db['password']
+cache = Redis.new :host => ENV['REDIS_HOST'], :port => ENV['REDIS_PORT'].to_i, :password => ENV['REDIS_PASSWORD']
 
 get '/conjugate/:lang/:verb' do
   content_type :json
